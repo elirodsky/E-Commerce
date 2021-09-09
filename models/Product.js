@@ -1,12 +1,12 @@
-// import important parts of sequelize library
+// model class comes from sequelize library
 const { Model, DataTypes } = require('sequelize');
-// import our database connection from config.js
+// importing from connection.js within config folder
 const sequelize = require('../config/connection');
 
-// Initialize Product model (table) by extending off Sequelize's Model class
+// Creates a new Sequelize model for Products
 class Product extends Model {}
 
-// set up fields and rules for Product model
+// defining fields & columns on product model
 Product.init(
   {
     id: {
@@ -22,7 +22,7 @@ Product.init(
     price: {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: false,
-      validate: {
+      validate: {//validates that the value is a decimal.
         isDecimal: true,
       }
     },
